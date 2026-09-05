@@ -37,11 +37,22 @@ documentation/formatting-only work.
    validate pure logic, but it cannot establish an external fact it replaces. Add a layer only
    when a concrete caller or boundary needs it.
 
-## Keep one source of truth
+## One ledger, one epoch
 
-If the work already has a project plan, issue, decision record, or task note, update that source
-instead of creating a second ledger. For one-off work, keep the brief in the task response or
-the existing work record. Do not create a separate reality document solely to use this Skill.
+If `project-to-act` is available, run its `--check` first and follow its mode. It owns goals,
+scope, durable progress, versions, evidence, and acceptance. Record this gate in the existing
+canonical source; never create `REALITY.md`, a second plan, or a parallel status file.
+
+For a managed project, use the existing files (or their equivalent sections):
+
+- overview: constraints, facts, and current unknowns;
+- progress: probes, blockers, owners, and next action;
+- versions: decisions changed by evidence;
+- acceptance: experiment evidence, gate result, and validity.
+
+For an unconfigured one-off project, keep the brief in the task response. Do not initialize
+project management merely because this skill loaded. Read the target section again before
+writing and validate through `project-to-act` after writing.
 
 Run one gate per decision batch. Edits and test iterations under the same assumptions do not
 restart it. Re-open only when new evidence invalidates an assumption, scope changes, or a new
@@ -63,7 +74,10 @@ DECISION CONSEQUENCE:
 NEXT ACTION / OWNER:
 ```
 
-After `PASS`, derive the smallest implementation plan and use the project's normal tests and
-review process. This gate does not replace behavioral testing or review. The honest result may
-be a stop: a clean `BLOCKED`/`INCOMPLETE` with a precise next probe is better than a polished
-implementation of an unverified premise.
+After `PASS`, derive the smallest implementation plan and use normal testing. At completion,
+invoke `design-integrity-review` only when its structural-risk route applies; evaluation or
+generation surfaces go through its single behavioral-acceptance route. Neither reviewer
+replaces this gate or creates another ledger.
+
+The honest result may be a stop. A clean `BLOCKED`/`INCOMPLETE` with a precise next probe is
+better than a polished implementation of an unverified premise.

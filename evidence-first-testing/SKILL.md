@@ -39,7 +39,9 @@ For bug fixes, regression tests, and behavior changes with a testable contract, 
 3. Make the smallest justified implementation change.
 4. Re-run the same signal and confirm it turns green.
 5. Run the smallest broader suite or check that is required by the repository, the user, or
-   a still-credible failure category. Do not expand testing for completeness alone.
+   a still-credible failure category. Broaden only when the changed contract, boundary, or
+   failure mode requires it; do not use a fixed test count or line-count comparison as a
+   substitute for evidence.
 
 Do not begin the implementation step until a focused signal exists. A bug fix requires
 defect-specific red-state evidence; a new behavior may use an expected-red contract test.
@@ -59,6 +61,10 @@ When adding or changing tests:
   answers where practical; a test should not merely restate the implementation.
 - Verify that a new regression test fails on the faulty implementation.
 - Check that a repaired flaky test is stable across enough repetitions to support the claim.
+- Add coverage for distinct acceptance conditions or credible failure modes, not to reach a
+  preset number of cases.
+- A test may be more involved than the implementation when it exercises a real boundary or
+  independent oracle; explain that evidence need instead of judging by code length.
 - Avoid weakening, deleting, skipping, or broadly mocking a failing assertion merely to make the suite green.
 - Distinguish product defects, test defects, and environment defects before editing.
 

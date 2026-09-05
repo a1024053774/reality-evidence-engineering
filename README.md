@@ -5,8 +5,9 @@
 - **Reality-First Engineering**：在架构或大范围实现前，确认我们是否在解决正确的问题。
 - **Evidence-First Testing**：在修复或改变行为后，证明测试确实检测到了目标行为。
 
-它们不绑定特定 Agent、reviewer、hook、项目管理工具或测试框架，可以单独使用，也可以
-按顺序配合使用。
+它们不绑定特定 Agent、reviewer、hook 或测试框架，可以单独使用，也可以按顺序配合使用。
+Reality-First 可以与已有项目账本（例如 `project-to-act`）协作，但不会创建第二套计划；
+Evidence-First 也不会用固定测试数量或代码长度限制真实覆盖。
 
 ## 用两个问题理解
 
@@ -25,6 +26,14 @@
 
 新需求的测试可以在实现前预期失败；这表示契约尚未实现，不应被误报成已经复现的旧缺陷。
 
+## 本次更新
+
+- Reality-First 将已有的 `project-to-act`（或等价项目账本）视为唯一持久事实源；同一
+  决策批次只运行一次 Reality Gate，后续迭代只有在新证据改变方向时才重开。
+- Evidence-First 不再把测试数量或代码长度当作覆盖上限或充分性证明；应按不同验收条件、
+  真实边界和可信故障模式决定是否扩展，并允许为独立 oracle 编写更复杂的测试。
+- 两个 Skill 仍然不依赖特定模型、provider、hook 或内部项目配置。
+
 ## 仓库边界
 
 这个仓库有意不包含：
@@ -42,7 +51,7 @@
 克隆仓库后，把两个 Skill 链接到使用的 Agent 目录。Codex 示例：
 
 ```bash
-git clone <repository-url>
+git clone git@github.com:a1024053774/reality-evidence-engineering.git
 cd reality-evidence-engineering
 
 mkdir -p "$HOME/.codex/skills"
