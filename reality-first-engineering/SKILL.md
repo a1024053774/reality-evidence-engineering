@@ -39,20 +39,19 @@ documentation/formatting-only work.
 
 ## One ledger, one epoch
 
-If `project-to-act` is available, run its `--check` first and follow its mode. It owns goals,
-scope, durable progress, versions, evidence, and acceptance. Record this gate in the existing
+If the project has a `.project-map/` (the `project-map` Skill), run its `status` first. It owns
+the destination, decisions, open work, and living docs. Record this gate in the existing
 canonical source; never create `REALITY.md`, a second plan, or a parallel status file.
 
-For a managed project, use the existing files (or their equivalent sections):
+For a mapped project, record the gate as tickets:
 
-- overview: constraints, facts, and current unknowns;
-- progress: probes, blockers, owners, and next action;
-- versions: decisions changed by evidence;
-- acceptance: experiment evidence, gate result, and validity.
+- facts and unknowns the direction depends on: `research` tickets, with evidence in the resolution;
+- probes and blockers: `task` tickets wired through `blocked_by`;
+- direction changes forced by evidence: a new decision ticket that `supersedes` the old one.
 
-For an unconfigured one-off project, keep the brief in the task response. Do not initialize
-project management merely because this skill loaded. Read the target section again before
-writing and validate through `project-to-act` after writing.
+For an unmapped one-off project, keep the brief in the task response. Do not create a project
+map merely because this skill loaded. Reread the target ticket before writing and run
+`status` after writing.
 
 Run one gate per decision batch. Edits and test iterations under the same assumptions do not
 restart it. Re-open only when new evidence invalidates an assumption, scope changes, or a new
