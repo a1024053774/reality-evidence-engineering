@@ -22,8 +22,10 @@ First classify what the red state means:
 Before implementing or repairing the claimed behavior, obtain the smallest reliable signal:
 
 - an existing failing test;
-- a new focused test or minimal reproducer;
-- a build, type-check, request, trace, or command that exposes the defect;
+- a reproduction through the real entry point, such as an end-to-end run, request, or command;
+- a build, type-check, or trace that exposes the defect;
+- an isolated test, only when the end-to-end path cannot pin the defect down; write down the
+  ways the unit could fail before writing that test;
 - for flaky or environment-specific failures, preserved logs, inputs, seeds, timing, and environment details.
 
 Record the exact command or procedure, inputs, expected result, observed result, environment,
@@ -58,7 +60,8 @@ When adding or changing tests:
 
 - Make assertions observable and specific to the claimed behavior.
 - Keep the expected result independent from production code, constants, helpers, or generated
-  answers where practical; a test should not merely restate the implementation.
+  answers; derive it from the requirement or another independent source. A test written from
+  the implementation's own output only restates it.
 - Verify that a new regression test fails on the faulty implementation.
 - Check that a repaired flaky test is stable across enough repetitions to support the claim.
 - Add coverage for distinct acceptance conditions or credible failure modes, not to reach a
