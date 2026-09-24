@@ -73,7 +73,10 @@ DECISION CONSEQUENCE:
 NEXT ACTION / OWNER:
 ```
 
-After `PASS`, derive the smallest implementation plan and use normal testing. At completion,
+After `PASS`, derive the smallest implementation plan and use normal testing. When the work
+spans layers (storage, domain logic, API, UI), the first step is a **tracer bullet**: one thin
+slice through every layer, run through the real entry point, kept as production code and then
+widened. Do not finish one layer before the next exists. At completion,
 invoke `design-integrity-review` only when its structural-risk route applies; evaluation or
 generation surfaces go through its single behavioral-acceptance route. Neither reviewer
 replaces this gate or creates another ledger.
